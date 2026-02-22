@@ -1,7 +1,7 @@
 //const express = require("express");
 
 import express from "express";
-
+import cookieParser from "cookie-parser";
 import path from "path";
 
 import authRoutes from "./routes/auth.route.js";
@@ -15,6 +15,7 @@ const PORT = ENV.PORT || 3000;
 const __dirname = path.resolve();
 
 app.use(express.json()); //will get access to "req.body", if we don't add this line, then it's will be undefined
+app.use(cookieParser());
 
 app.use("/api/auth", authRoutes);
 app.use("/api/messages", messageRoutes);
